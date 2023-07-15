@@ -91,7 +91,6 @@ fun AccountItem(
             }
             IconButton(onClick = {
                 clipboardManager.setText(AnnotatedString(account.password))
-                Toast.makeText(this, "", Toast.LENGTH_SHORT).show()
             }) {
                 Icon(painter = painterResource(id = R.drawable.content_copy), contentDescription = "Copy")
             }
