@@ -13,7 +13,6 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object RoomModule {
-
     @Provides
     @Singleton
     fun provideDatabase(@ApplicationContext appContext: Context): SecurePassDatabase {
@@ -23,4 +22,12 @@ object RoomModule {
             "secure_pass.db"
         ).build()
     }
+
+    @Provides
+    @Singleton
+    fun provideAccountsDao(db: SecurePassDatabase) = db.accountsDao()
+
+    @Provides
+    @Singleton
+    fun provideApplicationsDao(db: SecurePassDatabase) = db.applicationsDao()
 }

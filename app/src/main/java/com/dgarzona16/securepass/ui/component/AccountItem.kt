@@ -1,6 +1,6 @@
 package com.dgarzona16.securepass.ui.component
 
-import android.widget.Toast
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -19,6 +19,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.ClipboardManager
 import androidx.compose.ui.platform.LocalClipboardManager
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.AnnotatedString
@@ -26,6 +27,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.dgarzona16.securepass.R
 import com.dgarzona16.securepass.data.entities.Accounts
+import com.dgarzona16.securepass.utils.toast
 import java.util.UUID
 
 @Composable
@@ -36,6 +38,8 @@ fun AccountItem(
 ) {
     val passwordVisible = remember { mutableStateOf(false)}
     val clipboardManager: ClipboardManager = LocalClipboardManager.current
+    val context = LocalContext.current
+    val message = stringResource(id = R.string.copy_txt)
 
     Card(
         modifier = Modifier
@@ -68,7 +72,11 @@ fun AccountItem(
                 style = MaterialTheme.typography.bodyMedium,
             )
         }
-        Row() {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth(),
+            horizontalArrangement = Arrangement.End
+        ) {
             IconButton(onClick = { passwordVisible.value = !passwordVisible.value }) {
                 Icon(
                     painter = if (passwordVisible.value)
@@ -81,16 +89,15 @@ fun AccountItem(
                         "Show Password"
                 )
             }
-
             IconButton(onClick = onEditClick) {
                 Icon(imageVector = Icons.Filled.Edit, contentDescription = "Edit")
             }
-
             IconButton(onClick = onDeleteClick) {
                 Icon(imageVector = Icons.Filled.Delete, contentDescription = "Delete")
             }
             IconButton(onClick = {
                 clipboardManager.setText(AnnotatedString(account.password))
+                context.toast(message)
             }) {
                 Icon(painter = painterResource(id = R.drawable.content_copy), contentDescription = "Copy")
             }

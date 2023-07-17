@@ -1,49 +1,41 @@
 package com.dgarzona16.securepass.ui.layout
 
+import android.content.Context
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
+import androidx.compose.material3.Button
 import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import com.dgarzona16.securepass.ui.theme.SecurePassTheme
-import dagger.hilt.EntryPoint
-import dagger.hilt.InstallIn
+import com.dgarzona16.securepass.utils.*
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val sharedPreferences = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+        val isFirstUse = sharedPreferences.getBoolean(PREF_FIRST_USE, true)
+        val isBiometricEnabled = sharedPreferences.getBoolean(PREF_BIOMETRIC_ENABLED, false)
+
         setContent {
             SecurePassTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    Greeting("Daniel")
+                if (isFirstUse) {
+                    //temporary
+                    Text(text ="First use")
+                    Button(onClick = { sharedPreferences.edit().putBoolean(PREF_FIRST_USE, false).apply() }) {
+                        Text(text = "Save")
+                    }
+                }else{
+                    //temporary
+                    if (isBiometricEnabled) {
+                        Text(text = "Biometric enabled")
+                    }else{
+                        Text(text = "Biometric disabled")
+                    }
                 }
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    SecurePassTheme {
-        Greeting("Android")
     }
 }
