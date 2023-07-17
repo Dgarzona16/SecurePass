@@ -55,11 +55,11 @@ private val LightColorScheme = lightColorScheme(
 
 @Composable
 fun SecurePassTheme(
+    themeState: ThemeState,
     darkTheme: Boolean = isSystemInDarkTheme(),
     dynamicColor: Boolean = true,
     content: @Composable () -> Unit
 ) {
-    val themeState = remember { ThemeState() }
     themeState.setThemeSelection(ThemeSelection.SYSTEM) // Establecer el tema por defecto
 
     CompositionLocalProvider(LocalThemeState provides themeState) {

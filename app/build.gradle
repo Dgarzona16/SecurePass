@@ -55,6 +55,9 @@ kapt{
 dependencies {
     //region My dependencies
 
+    //accompanist
+    implementation "com.google.accompanist:accompanist-permissions:$accompanist_version"
+
     //Room
     implementation "androidx.room:room-ktx:$room_version"
     implementation "androidx.room:room-runtime:$room_version"
