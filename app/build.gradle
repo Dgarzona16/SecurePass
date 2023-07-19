@@ -64,12 +64,14 @@ dependencies {
     kapt "androidx.room:room-compiler:$room_version"
 
     //Dagger
+    implementation "androidx.hilt:hilt-navigation-compose:$hilt_version"
     implementation "com.google.dagger:hilt-android:$dagger_version"
     kapt "com.google.dagger:hilt-compiler:$dagger_version"
 
     //Navigation
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
+    implementation "androidx.navigation:navigation-compose:$nav_version"
 
     //Biometric
     implementation "androidx.biometric:biometric-ktx:$biometric_version"

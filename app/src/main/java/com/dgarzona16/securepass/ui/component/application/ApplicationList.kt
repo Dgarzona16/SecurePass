@@ -1,4 +1,4 @@
-package com.dgarzona16.securepass.ui.component
+package com.dgarzona16.securepass.ui.component.application
 
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.Composable

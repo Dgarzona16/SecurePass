@@ -30,4 +30,8 @@ object RoomModule {
     @Provides
     @Singleton
     fun provideApplicationsDao(db: SecurePassDatabase) = db.applicationsDao()
+
+    @Provides
+    @Singleton
+    fun provideConfigsDao(db: SecurePassDatabase) = db.configsDao()
 }

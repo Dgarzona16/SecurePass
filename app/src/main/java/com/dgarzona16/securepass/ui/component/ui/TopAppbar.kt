@@ -1,4 +1,4 @@
-package com.dgarzona16.securepass.ui.component
+package com.dgarzona16.securepass.ui.component.ui
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
@@ -12,12 +12,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.navigation.NavController
+import com.dgarzona16.securepass.utils.MainNav
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TopAppbar(
     navController: NavController,
-    onBackAction: () -> Unit,
     title: String,
     settingNavigation: () -> Unit,
 ) {
@@ -28,8 +28,8 @@ fun TopAppbar(
     CenterAlignedTopAppBar(
         title = { Text(text = title) },
         navigationIcon = {
-            if (hasBackStackEntry) {
-                IconButton(onClick = onBackAction) {
+            if (hasBackStackEntry && navController.currentDestination?.route != MainNav.APPLICATION_LIST) {
+                IconButton(onClick = { navController.popBackStack() }) {
                     Icon(
                         imageVector = Icons.Default.ArrowBack,
                         contentDescription = "Back"

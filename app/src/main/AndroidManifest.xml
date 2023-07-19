@@ -23,9 +23,8 @@
         android:theme="@style/Theme.SecurePass"
         tools:targetApi="31">
         <activity
-            android:name=".ui.layout.MainActivity"
+            android:name=".ui.layout.activity.MainActivity"
             android:exported="true"
-            android:label="@string/app_name"
             android:theme="@style/Theme.SecurePass">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

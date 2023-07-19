@@ -1,4 +1,4 @@
-package com.dgarzona16.securepass.ui.component
+package com.dgarzona16.securepass.ui.component.account
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
