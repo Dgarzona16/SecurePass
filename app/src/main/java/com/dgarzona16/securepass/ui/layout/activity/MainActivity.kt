@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.CircularProgressIndicator
@@ -25,21 +26,25 @@ import com.dgarzona16.securepass.utils.*
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MainActivity: ComponentActivity() {
-
+class MainActivity: AppCompatActivity() {
+    private val themeState = ThemeState()
     @RequiresApi(Build.VERSION_CODES.P)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         setContent {
-            Main()
+            SecurePassTheme(themeState = themeState) {
+                Main(themeState = themeState)
+            }
         }
     }
 }
 
 @Composable
-fun Main(viewModel: ActivityViewModel = hiltViewModel()){
-    val themeState = ThemeState()
+fun Main(
+    viewModel: ActivityViewModel = hiltViewModel(),
+    themeState: ThemeState
+){
+
     var loaded by remember { mutableStateOf(false) }
     var isFirstUse by remember { mutableStateOf(true) }
 
@@ -57,20 +62,18 @@ fun Main(viewModel: ActivityViewModel = hiltViewModel()){
         }
     }
 
-    SecurePassTheme(themeState = themeState) {
-        Box(
-            modifier = Modifier
-                .fillMaxSize(),
-            contentAlignment = Alignment.Center
-        ){
-            if(loaded){
-                NavInitToMain(
-                    themeState = themeState,
-                    startDestination = if(isFirstUse) InitialNav.FIRST_INIT else InitialNav.MAIN
-                )
-            }else{
-                CircularProgressIndicator()
-            }
+    Box(
+        modifier = Modifier
+            .fillMaxSize(),
+        contentAlignment = Alignment.Center
+    ){
+        if(loaded){
+            NavInitToMain(
+                themeState = themeState,
+                startDestination = if(isFirstUse) InitialNav.FIRST_INIT else InitialNav.MAIN
+            )
+        }else{
+            CircularProgressIndicator()
         }
     }
 }

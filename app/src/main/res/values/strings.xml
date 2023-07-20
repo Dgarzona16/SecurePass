@@ -3,4 +3,12 @@
     <string name="username">Username</string>
     <string name="password">Password</string>
     <string name="copy_txt">Password copied to clipboard</string>
+    <string name="authentication_is_failed_title">Authentication is Failed</string>
+    <string name="authentication_is_failed_body">cannot be authenticated or you have canceled the authentication</string>
+    <string name="try_again">Try Again</string>
+    <string name="no_biometric_title">Has no biometric security</string>
+    <string name="no_biometric_body">You do not have any type of security on the device, it is recommended to activate biometric security to protect your data</string>
+    <string name="continue_anyway">Continue anyway</string>
+    <string name="authentication_title">authentication</string>
+    <string name="authentication_body">Authenticate to access the application</string>
 </resources>

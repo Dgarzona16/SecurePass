@@ -4,4 +4,12 @@
     <string name="username">Nombre de usuario</string>
     <string name="password">Contraseña</string>
     <string name="copy_txt">contraseña copiada</string>
+    <string name="authentication_is_failed_title">Fallo de autenticacion</string>
+    <string name="authentication_is_failed_body">no pudo ser autenticado o fue cancelada la autenticacion</string>
+    <string name="try_again">Intentar de nuevo</string>
+    <string name="no_biometric_title">No tiene seguridad biometrica</string>
+    <string name="no_biometric_body">No tiene ningún tipo de seguridad en el dispositivo, se recomienda activar la seguridad biometrica para proteger sus datos</string>
+    <string name="continue_anyway">Continuar de todos modos</string>
+    <string name="authentication_title">autenticacion</string>
+    <string name="authentication_body">autentiquese para acceder a la aplicacion</string>
 </resources>
