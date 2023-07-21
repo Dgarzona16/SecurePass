@@ -1,4 +1,4 @@
-package com.dgarzona16.securepass.ui.layout.firstInit
+package com.dgarzona16.securepass.ui.layout.SetupInit
 
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text

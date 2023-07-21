@@ -21,7 +21,6 @@ import com.dgarzona16.securepass.R
 
 @Composable
 fun ErrorScreen (
-    innerPadding: PaddingValues,
     title: String,
     message: String,
     btnText: String,
@@ -29,7 +28,6 @@ fun ErrorScreen (
 ) {
     Column(
         modifier = Modifier
-            .padding(innerPadding)
             .fillMaxSize()
             .background(MaterialTheme.colorScheme.background)
             .padding(16.dp),

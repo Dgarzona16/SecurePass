@@ -2,7 +2,6 @@ package com.dgarzona16.securepass.ui.layout.activity
 
 import android.os.Build
 import android.os.Bundle
-import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
@@ -19,7 +18,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.dgarzona16.securepass.enums.status.GetConfigStatus
-import com.dgarzona16.securepass.navigation.NavInitToMain
+import com.dgarzona16.securepass.navigation.AppNavigation
 import com.dgarzona16.securepass.ui.theme.SecurePassTheme
 import com.dgarzona16.securepass.ui.theme.ThemeState
 import com.dgarzona16.securepass.utils.*
@@ -44,7 +43,6 @@ fun Main(
     viewModel: ActivityViewModel = hiltViewModel(),
     themeState: ThemeState
 ){
-
     var loaded by remember { mutableStateOf(false) }
     var isFirstUse by remember { mutableStateOf(true) }
 
@@ -67,13 +65,12 @@ fun Main(
             .fillMaxSize(),
         contentAlignment = Alignment.Center
     ){
-        if(loaded){
-            NavInitToMain(
+        if(loaded)
+            AppNavigation(
                 themeState = themeState,
-                startDestination = if(isFirstUse) InitialNav.FIRST_INIT else InitialNav.MAIN
+                startDestination = if(isFirstUse) AppRoute.SETUP_INITIAL else AppRoute.AUTHENTICATION
             )
-        }else{
+        else
             CircularProgressIndicator()
-        }
     }
 }

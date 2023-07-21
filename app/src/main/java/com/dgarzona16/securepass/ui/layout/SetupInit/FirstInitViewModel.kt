@@ -1,6 +1,5 @@
-package com.dgarzona16.securepass.ui.layout.firstInit
+package com.dgarzona16.securepass.ui.layout.SetupInit
 
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.dgarzona16.securepass.data.dao.ConfigsDao

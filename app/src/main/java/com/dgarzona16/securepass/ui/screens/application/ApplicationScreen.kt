@@ -11,25 +11,20 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
 import com.dgarzona16.securepass.ui.component.application.ApplicationList
 import com.dgarzona16.securepass.ui.component.ui.FAB
+import com.dgarzona16.securepass.utils.AppRoute
 
 @Composable
 fun ApplicationScreen (
-    navigation: NavController
+    navController: NavController,
+    appNavController: NavController
 ) {
     ApplicationList(applications = emptyList())
     FAB(
-        onClick = { /* TODO: */ }
+        onClick = { appNavController.navigate(AppRoute.ERROR) }
     ) {
         Icon(
             imageVector = Icons.Filled.Add,
             contentDescription = "add"
         )
     }
-}
-
-@Preview
-@Composable
-fun ApplicationScreenPreview() {
-    val navController = NavController(LocalContext.current)
-    ApplicationScreen(navController)
 }
