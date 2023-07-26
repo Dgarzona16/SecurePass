@@ -8,15 +8,14 @@ import com.dgarzona16.securepass.ui.screens.application.ApplicationScreen
 import com.dgarzona16.securepass.utils.ApplicationsGraph
 import com.dgarzona16.securepass.utils.MainRoute
 
-fun NavGraphBuilder.applicationsGraph(navController: NavController, appNavController: NavController){
+fun NavGraphBuilder.applicationsGraph(navController: NavController){
     navigation(
-        startDestination = ApplicationsGraph.APPLICATION_LIST,
-        route = MainRoute.APPLICATION
+        route = MainRoute.APPLICATION,
+        startDestination = ApplicationsGraph.APPLICATION_LIST
     ){
         composable(ApplicationsGraph.APPLICATION_LIST) {
             ApplicationScreen(
-                navController = navController,
-                appNavController = appNavController
+                navController = navController
             )
         }
         composable(ApplicationsGraph.APPLICATION_DETAIL){ /* TODO */ }

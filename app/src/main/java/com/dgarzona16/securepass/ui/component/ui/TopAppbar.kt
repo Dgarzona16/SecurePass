@@ -12,8 +12,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.navigation.NavController
+import com.dgarzona16.securepass.utils.AppRoute
 import com.dgarzona16.securepass.utils.ApplicationsGraph
 import com.dgarzona16.securepass.utils.MainRoute
+import com.dgarzona16.securepass.utils.showTopBar
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -29,7 +31,10 @@ fun TopAppbar(
     CenterAlignedTopAppBar(
         title = { Text(text = title) },
         navigationIcon = {
-            if (hasBackStackEntry && navController.currentDestination?.route != ApplicationsGraph.APPLICATION_LIST) {
+            if (
+                hasBackStackEntry
+                && navController.currentDestination?.route != ApplicationsGraph.APPLICATION_LIST
+            ) {
                 IconButton(onClick = { navController.popBackStack() }) {
                     Icon(
                         imageVector = Icons.Default.ArrowBack,

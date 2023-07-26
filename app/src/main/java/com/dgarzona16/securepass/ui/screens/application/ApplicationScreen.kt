@@ -16,11 +16,12 @@ import com.dgarzona16.securepass.utils.AppRoute
 @Composable
 fun ApplicationScreen (
     navController: NavController,
-    appNavController: NavController
 ) {
     ApplicationList(applications = emptyList())
     FAB(
-        onClick = { appNavController.navigate(AppRoute.ERROR) }
+        onClick = {
+            navController.navigate("${AppRoute.ERROR}/Error/This/ok/ANOTHER_ERROR"){popUpTo(0)}
+        }
     ) {
         Icon(
             imageVector = Icons.Filled.Add,

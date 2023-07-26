@@ -1,28 +1,23 @@
 package com.dgarzona16.securepass.navigation
 
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import com.dgarzona16.securepass.R
 import com.dgarzona16.securepass.enums.ErrorType
 import com.dgarzona16.securepass.utils.AppRoute
 import com.dgarzona16.securepass.ui.layout.SetupInit.FirstInitLayout
-import com.dgarzona16.securepass.ui.layout.MainLayout
 import com.dgarzona16.securepass.ui.layout.authentication.AuthenticationLayout
 import com.dgarzona16.securepass.ui.screens.error.ErrorScreen
 import com.dgarzona16.securepass.ui.theme.ThemeState
 
 @Composable
 fun AppNavigation(
-    navController: NavHostController = rememberNavController(),
-    startDestination: String = AppRoute.SETUP_INITIAL,
+    navController: NavHostController,
+    startDestination: String,
     themeState: ThemeState,
 ){
 
@@ -31,7 +26,6 @@ fun AppNavigation(
         navController = navController,
         startDestination = startDestination
     ){
-
         composable(AppRoute.SETUP_INITIAL){
             FirstInitLayout(
                 onNavigateToMain = {
@@ -54,7 +48,7 @@ fun AppNavigation(
             val errorType = ErrorType.valueOf(it.arguments?.getString("errorType") ?: "ANOTHER_ERROR")
             val onAction = {
                 when(errorType){
-                     ErrorType.AUTH_ERROR -> navController.navigate(AppRoute.AUTHENTICATION)
+                    ErrorType.AUTH_ERROR -> navController.navigate(AppRoute.AUTHENTICATION)
                     else -> navController.navigate(AppRoute.MAIN)
                 }
             }
@@ -77,11 +71,6 @@ fun AppNavigation(
                 }
             )
         }
-        composable(AppRoute.MAIN){
-            MainLayout(
-                appNavController = navController,
-                themeState = themeState
-            )
-        }
+        mainNavigation(navController = navController, themeState = themeState)
     }
 }
