@@ -11,4 +11,17 @@
     <string name="continue_anyway">Continue anyway</string>
     <string name="authentication_title">authentication</string>
     <string name="authentication_body">Authenticate to access the application</string>
+    <string name="daily">Daily</string>
+    <string name="weekly">Weekly</string>
+    <string name="monthly">Monthly</string>
+    <string name="welcome_to_securepass">Welcome to SecurePass</string>
+    <string name="setup_body_text">This is your first time using the app, please follow the next steps to setup the app</string>
+    <string name="import_label">Import your backup file</string>
+    <string name="import_btn">Import backup</string>
+    <string name="divider_label_or">Or</string>
+    <string name="setup_email_label">Add your email to generate a backups</string>
+    <string name="setup_password_label">Add your secure password to encrypt your backup</string>
+    <string name="setup_frequency_backup">Add your frequency to generate a backups</string>
+    <string name="setup_email_error">this email is not valid</string>
+    <string name="finish_setup">Finish</string>
 </resources>

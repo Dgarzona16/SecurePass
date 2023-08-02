@@ -1,26 +1,26 @@
 package com.dgarzona16.securepass.ui.screens.application
 
-import androidx.compose.foundation.layout.Column
+import android.util.Log
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.Icon
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.dgarzona16.securepass.ui.component.application.ApplicationList
 import com.dgarzona16.securepass.ui.component.ui.FAB
-import com.dgarzona16.securepass.utils.AppRoute
+import com.dgarzona16.securepass.utils.ApplicationsGraph
 
 @Composable
 fun ApplicationScreen (
+    applicationViewModel: ApplicationViewModel = hiltViewModel(),
     navController: NavController,
 ) {
-    ApplicationList(applications = emptyList())
+    Log.d("ApplicationScreen", "Application list: ${applicationViewModel.applications}")
+    ApplicationList(applications = applicationViewModel.applications)
     FAB(
         onClick = {
-            //navController.navigate(""){popUpTo(0)}
+            navController.navigate(ApplicationsGraph.APPLICATION_ADD){}
         }
     ) {
         Icon(

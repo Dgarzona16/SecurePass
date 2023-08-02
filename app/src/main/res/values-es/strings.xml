@@ -12,4 +12,17 @@
     <string name="continue_anyway">Continuar de todos modos</string>
     <string name="authentication_title">autenticacion</string>
     <string name="authentication_body">autentiquese para acceder a la aplicacion</string>
+    <string name="daily">Diario</string>
+    <string name="weekly">Semanal</string>
+    <string name="monthly">Mensual</string>
+    <string name="welcome_to_securepass">Bienvenido a SecurePass</string>
+    <string name="setup_body_text">Esta es la primera vez que usa la aplicación, siga los siguientes pasos para configurar la aplicación</string>
+    <string name="import_label">Importe su archivo de respaldo</string>
+    <string name="import_btn">Importar respaldo</string>
+    <string name="divider_label_or">O</string>
+    <string name="setup_email_label">Agregue su correo electrónico para generar una copia de seguridad</string>
+    <string name="setup_password_label">Agregue su contraseña segura para cifrar su copia de seguridad</string>
+    <string name="setup_frequency_backup">Agregue su frecuencia para generar una copia de seguridad</string>
+    <string name="setup_email_error">este correo no es valido</string>
+    <string name="finish_setup">Finalizar</string>
 </resources>

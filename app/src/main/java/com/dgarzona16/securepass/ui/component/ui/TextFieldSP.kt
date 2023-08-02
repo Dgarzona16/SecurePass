@@ -7,6 +7,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
@@ -63,7 +64,7 @@ fun TextFieldSP(
         )
     }
 
-    TextField(
+    OutlinedTextField(
         value = value.value,
         onValueChange = {
             onChangeValue(it)
@@ -90,15 +91,7 @@ fun TextFieldSP(
             KeyboardType.Email -> KeyboardType.Email.keyboardType
             KeyboardType.Password -> KeyboardType.Password.keyboardType
         },
-        shape = RoundedCornerShape(16.dp),
         leadingIcon = icon,
-        colors = TextFieldDefaults.colors(
-            focusedIndicatorColor = Color.Transparent,
-            unfocusedIndicatorColor = Color.Transparent,
-            disabledIndicatorColor = Color.Transparent,
-            errorIndicatorColor = Color.Transparent,
-            focusedContainerColor = MaterialTheme.colorScheme.surface
-        ),
         trailingIcon = if (type == KeyboardType.Password) tIcon else null,
         enabled = isEnabled.value,
         textStyle = textStyle,
