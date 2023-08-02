@@ -29,7 +29,7 @@ fun AppNavigation(
         composable(AppRoute.SETUP_INITIAL){
             FirstInitLayout(
                 onNavigateToMain = {
-                    navController.navigate("main"){ popUpTo(0) }
+                    navController.navigate(AppRoute.MAIN){ popUpTo(0) }
                 }
             )
         }
@@ -49,7 +49,7 @@ fun AppNavigation(
             val onAction = {
                 when(errorType){
                     ErrorType.AUTH_ERROR -> navController.navigate(AppRoute.AUTHENTICATION)
-                    else -> navController.navigate(AppRoute.MAIN)
+                    else -> navController.navigate(AppRoute.MAIN){popUpTo(0)}
                 }
             }
             ErrorScreen(

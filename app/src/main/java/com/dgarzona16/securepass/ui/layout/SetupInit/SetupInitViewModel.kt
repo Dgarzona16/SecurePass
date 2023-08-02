@@ -9,7 +9,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class FirstInitViewModel @Inject constructor(
+class SetupInitViewModel @Inject constructor(
     private val configsDao: ConfigsDao
 ): ViewModel() {
 

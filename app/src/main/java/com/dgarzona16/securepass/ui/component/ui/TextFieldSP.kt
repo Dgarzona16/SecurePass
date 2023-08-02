@@ -17,19 +17,25 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.dgarzona16.securepass.R
 
 @Composable
 fun TextFieldSP(
-    label: String,
+    label: String? = null,
     value: MutableState<String>,
     icon: @Composable (() -> Unit)? = null,
     isError: MutableState<Boolean> = mutableStateOf(false),
     supportText: MutableState<String> = mutableStateOf(""),
     type: KeyboardType = KeyboardType.Text,
+    onChangeValue: (String) -> Unit = {},
+    float: Float = 1f,
+    padding: Dp = 16.dp,
+    textStyle: TextStyle = MaterialTheme.typography.labelMedium,
     isEnabled: MutableState<Boolean> = mutableStateOf(true)
 ) {
     val showContent = remember { mutableStateOf(true) }
@@ -39,21 +45,34 @@ fun TextFieldSP(
         else
             VisualTransformation.None
 
+    val tIcon = @Composable {
+        Icon(
+            painter = painterResource(id = if (showContent.value) R.drawable.visibility else R.drawable.visibility_off),
+            contentDescription = "Password Visibility",
+            modifier = Modifier.clickable {
+                showContent.value = !showContent.value
+            }
+        )
+    }
+
+    val tLabel = @Composable {
+        Text(
+            text = label ?: "",
+            color = MaterialTheme.colorScheme.onSurface,
+            style = MaterialTheme.typography.bodySmall
+        )
+    }
+
     TextField(
         value = value.value,
         onValueChange = {
+            onChangeValue(it)
             value.value = it
         },
         modifier = Modifier
-            .fillMaxWidth()
-            .padding(horizontal = 16.dp),
-        label = {
-            Text(
-                text = label,
-                color = MaterialTheme.colorScheme.onSurface,
-                style = MaterialTheme.typography.labelMedium
-            )
-        },
+            .fillMaxWidth(float)
+            .padding(horizontal = padding),
+        label = if (label != null) tLabel else null,
         isError = isError.value,
         visualTransformation = visualTransformation,
         supportingText = {
@@ -80,19 +99,9 @@ fun TextFieldSP(
             errorIndicatorColor = Color.Transparent,
             focusedContainerColor = MaterialTheme.colorScheme.surface
         ),
-        trailingIcon = {
-            if (type == KeyboardType.Password) {
-                Icon(
-                    painter = painterResource(id = if (showContent.value) R.drawable.visibility else R.drawable.visibility_off),
-                    contentDescription = "Password Visibility",
-                    modifier = Modifier.clickable {
-                        showContent.value = !showContent.value
-                    }
-                )
-            }
-        },
+        trailingIcon = if (type == KeyboardType.Password) tIcon else null,
         enabled = isEnabled.value,
-        textStyle = MaterialTheme.typography.bodyMedium,
+        textStyle = textStyle,
         singleLine = true
     )
 }

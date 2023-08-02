@@ -63,6 +63,7 @@ fun Main(
     navController: NavHostController
 ){
     var loaded by remember { mutableStateOf(false) }
+    var showTopBar by remember { mutableStateOf(false) }
     var isFirstUse by remember { mutableStateOf(true) }
     val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior()
 
@@ -91,18 +92,15 @@ fun Main(
                     .fillMaxSize()
                     .nestedScroll(scrollBehavior.nestedScrollConnection),
                 topBar = {
-                    //TODO: fix using mutableStateOf
-                    if (showTopBar(navController.currentBackStackEntry?.destination?.route)) {
-                        TopAppbar(
-                            navController = navController,
-                            title = stringResource(id = R.string.app_name),
-                            settingNavigation = {
-                                navController.navigate(MainRoute.SETTING) {
-                                    launchSingleTop = true
-                                }
+                    TopAppbar(
+                        navController = navController,
+                        title = stringResource(id = R.string.app_name),
+                        settingNavigation = {
+                            navController.navigate(MainRoute.SETTING) {
+                                launchSingleTop = true
                             }
-                        )
-                    }
+                        }
+                    )
                 }
             ) { innerPadding ->
                 Box(

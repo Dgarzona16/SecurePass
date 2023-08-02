@@ -13,8 +13,7 @@ fun showTopBar(destination: String?): Boolean {
     return when (destination) {
         AppRoute.SETUP_INITIAL -> false
         AppRoute.AUTHENTICATION -> false
-        AppRoute.ERROR -> false
-        null -> false
+        "${AppRoute.ERROR}/{title}/{message}/{btnText}/{errorType}" -> false
         else -> true
     }
 }

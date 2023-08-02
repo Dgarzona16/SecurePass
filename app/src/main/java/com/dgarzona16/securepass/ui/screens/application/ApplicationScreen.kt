@@ -20,7 +20,7 @@ fun ApplicationScreen (
     ApplicationList(applications = emptyList())
     FAB(
         onClick = {
-            navController.navigate("${AppRoute.ERROR}/Error/This/ok/ANOTHER_ERROR"){popUpTo(0)}
+            //navController.navigate(""){popUpTo(0)}
         }
     ) {
         Icon(
